@@ -29,7 +29,7 @@ if ($resultado->execute()) {
     // Verificar si la inserción fue exitosa
     if (isset($responseData['success']) && $responseData['success'] === true) {
         // Redirigir al usuario a la página deseada
-        header('Location:http://localhost/ApiLector/obtenerUmedida.php');
+        header('Location:http://192.168.1.190/ApiLector/obtenerUmedida.php');
         exit;
     } else {
         // Manejar el caso de error si es necesario
