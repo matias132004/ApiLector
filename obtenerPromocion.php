@@ -1,6 +1,6 @@
 <?php
 include('conexionServer.php');
-
+include('Rutas.php');
 $obj = new ConexionServer();
 $conexion = $obj->Conectar();
 $consulta = "select id_promocion,id_producto,fecha_inicio,fecha_fin,lunes,martes,miercoles,jueves,viernes,sabado,domingo,observacion from promocion where vigente = 't'";
@@ -30,7 +30,7 @@ if ($resultado->execute()) {
         // Verificar si 'success' es true en la respuesta
         if ($responseData['success'] === true) {
             // Redirigir al usuario a la página deseada
-            header('Location: http://192.168.1.190/AdministradorLector/ControladorMenu/index');
+            header('Location: http://'.RUTA.'/ApiLector/obtenerPrecioVolumen.php');
             exit;
         } else {
             // Si 'success' está definido pero no es true, mostrar mensaje de error

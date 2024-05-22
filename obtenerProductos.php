@@ -1,5 +1,6 @@
 <?php
 include('conexionServer.php');
+include('Rutas.php');
 
 $obj = new ConexionServer();
 $conexion = $obj->Conectar();
@@ -34,7 +35,7 @@ if ($resultado->execute()) {
         // Verificar si 'success' es true en la respuesta
         if ($responseData['success'] === true) {
             // Redirigir al usuario a la página deseada
-            header('Location: http://192.168.1.190/ApiLector/obtenerPromocion.php');
+            header('Location: http://'.RUTA.'/ApiLector/obtenerPromocion.php');
             exit;
         } else {
             // Si 'success' está definido pero no es true, mostrar mensaje de error
