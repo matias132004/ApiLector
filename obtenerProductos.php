@@ -18,7 +18,7 @@ if ($resultado->execute()) {
     }
     $jsonData = json_encode(['productos' => $array], JSON_UNESCAPED_UNICODE);
 
-    $url = 'http://localhost/ApiLector/insertarProductos.php';
+    $url = 'http://'.RUTA.'/ApiLector/insertarProductos.php';
     $ch = curl_init($url);
     curl_setopt($ch, CURLOPT_POST, true);
     curl_setopt($ch, CURLOPT_POSTFIELDS, $jsonData);

@@ -1,4 +1,5 @@
 <?php
+
     define('SERVER', 'localhost');
     define('DBNAME','dbLector');
     define('USER', 'postgres');

@@ -15,7 +15,7 @@ if ($resultado->execute()) {
     $jsonData = json_encode(['familias' => $array], JSON_UNESCAPED_UNICODE);
 
     // Realizar la solicitud HTTP POST al archivo insertarFamilias.php
-    $url = 'http://localhost/ApiLector/insertarFamilias.php';
+    $url = 'http://'.RUTA.'/ApiLector/insertarFamilias.php';
     $ch = curl_init($url);
     curl_setopt($ch, CURLOPT_POST, true);
     curl_setopt($ch, CURLOPT_POSTFIELDS, $jsonData);

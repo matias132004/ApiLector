@@ -15,7 +15,7 @@ if ($resultado->execute()) {
     $jsonData = json_encode(['umedidas' => $array], JSON_UNESCAPED_UNICODE);
 
     // Realizar la solicitud HTTP POST al archivo insertarFamilias.php
-    $url = 'http://localhost/ApiLector/insertarUmedida.php';
+    $url = 'http://'.RUTA.'/ApiLector/insertarUmedida.php';
     $ch = curl_init($url);
     curl_setopt($ch, CURLOPT_POST, true);
     curl_setopt($ch, CURLOPT_POSTFIELDS, $jsonData);
