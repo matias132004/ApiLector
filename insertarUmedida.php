@@ -35,7 +35,7 @@ if ($data !== null && isset($data['umedidas'])) {
     foreach ($data['umedidas'] as $umedida) {
         $id_umedida = $umedida['id_umedida'];
         $nombre_umedida = $umedida['nombre_umedida'];
-        $nombre_corto = $umedida['nombre_corto'];
+        $nombre_corto = '';
 
         // Verificar si la unidad de medida ya existe en la base de datos
         $query_check = "SELECT id_umedida FROM umedida WHERE id_umedida = :id_umedida";

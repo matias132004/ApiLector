@@ -4,10 +4,9 @@ include('Rutas.php');
 
 $obj = new ConexionServer();
 $conexion = $obj->Conectar();
-$consulta = "SELECT p.id_producto, p.id_umedida, p.nombre_producto, p.id_familia, p.cbarra, dp.total, hcp.precio_old
+$consulta = "SELECT p.id_producto, p.id_umedida, p.nombre_producto, p.id_familia, p.cbarra, dp.total
              FROM producto AS p
              INNER JOIN detalle_lprecio AS dp ON p.id_producto = dp.id_producto
-             LEFT JOIN historico_cambio_precio AS hcp ON p.id_producto = hcp.id_producto
              WHERE venta_publico = 't'";
 $resultado = $conexion->prepare($consulta);
 
@@ -18,7 +17,7 @@ if ($resultado->execute()) {
     }
     $jsonData = json_encode(['productos' => $array], JSON_UNESCAPED_UNICODE);
 
-    $url = 'http://'.RUTA.'/ApiLector/insertarProductos.php';
+    $url = 'http://'.RUTA.'/ApiLectorResto/insertarProductos.php';
     $ch = curl_init($url);
     curl_setopt($ch, CURLOPT_POST, true);
     curl_setopt($ch, CURLOPT_POSTFIELDS, $jsonData);
@@ -35,7 +34,7 @@ if ($resultado->execute()) {
         // Verificar si 'success' es true en la respuesta
         if ($responseData['success'] === true) {
             // Redirigir al usuario a la página deseada
-            header('Location: http://'.RUTA.'/ApiLector/obtenerPromocion.php');
+            header('Location: http://'.RUTA.'/AdministradorLector/ControladorMenu/index');
             exit;
         } else {
             // Si 'success' está definido pero no es true, mostrar mensaje de error

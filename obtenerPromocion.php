@@ -30,7 +30,7 @@ if ($resultado->execute()) {
         // Verificar si 'success' es true en la respuesta
         if ($responseData['success'] === true) {
             // Redirigir al usuario a la página deseada
-            header('Location: http://'.RUTA.'/ApiLector/obtenerPrecioVolumen.php');
+            header('Location: http://'.RUTA.'/ApiLectorResto/obtenerPrecioVolumen.php');
             exit;
         } else {
             // Si 'success' está definido pero no es true, mostrar mensaje de error

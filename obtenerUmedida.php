@@ -4,7 +4,7 @@ include('Rutas.php');
 
 $obj = new ConexionServer();
 $conexion = $obj->Conectar();
-$consulta = "select id_umedida, nombre_umedida,nombre_corto from umedida";
+$consulta = "select id_umedida, nombre_umedida from umedida";
 $resultado = $conexion->prepare($consulta);
 
 if ($resultado->execute()) {
@@ -15,7 +15,7 @@ if ($resultado->execute()) {
     $jsonData = json_encode(['umedidas' => $array], JSON_UNESCAPED_UNICODE);
 
     // Realizar la solicitud HTTP POST al archivo insertarFamilias.php
-    $url = 'http://'.RUTA.'/ApiLector/insertarUmedida.php';
+    $url = 'http://'.RUTA.'/ApiLectorResto/insertarUmedida.php';
     $ch = curl_init($url);
     curl_setopt($ch, CURLOPT_POST, true);
     curl_setopt($ch, CURLOPT_POSTFIELDS, $jsonData);
@@ -30,7 +30,7 @@ if ($resultado->execute()) {
     // Verificar si la inserción fue exitosa
     if (isset($responseData['success']) && $responseData['success'] === true) {
         // Redirigir al usuario a la página deseada
-        header('Location: http://'.RUTA.'/ApiLector/obtenerProductos.php');
+        header('Location: http://'.RUTA.'/ApiLectorResto/obtenerProductos.php');
         exit;
     } else {
         // Manejar el caso de error si es necesario

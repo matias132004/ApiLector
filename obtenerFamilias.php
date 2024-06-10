@@ -15,7 +15,7 @@ if ($resultado->execute()) {
     $jsonData = json_encode(['familias' => $array], JSON_UNESCAPED_UNICODE);
 
     // Realizar la solicitud HTTP POST al archivo insertarFamilias.php
-    $url = 'http://'.RUTA.'/ApiLector/insertarFamilias.php';
+    $url = 'http://'.RUTA.'/ApiLectorResto/insertarFamilias.php';
     $ch = curl_init($url);
     curl_setopt($ch, CURLOPT_POST, true);
     curl_setopt($ch, CURLOPT_POSTFIELDS, $jsonData);
@@ -30,7 +30,7 @@ if ($resultado->execute()) {
     // Verificar si la inserción fue exitosa
     if (isset($responseData['success']) && $responseData['success'] === true) {
         // Redirigir al usuario a la página deseada
-        header('Location:http://'.RUTA.'/ApiLector/obtenerUmedida.php');
+        header('Location:http://'.RUTA.'/ApiLectorResto/obtenerUmedida.php');
         exit;
     } else {
         // Manejar el caso de error si es necesario
